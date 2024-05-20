@@ -16,7 +16,7 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping("/get_characters_user/{id}")
-    public List<Integer> getCharactersUser(@PathVariable("id") Integer id) {
+    public List<Character> getCharactersUser(@PathVariable("id") Integer id) {
         return userRepository.getCharactersByUser(id);
     }
 
@@ -33,5 +33,10 @@ public class UserController {
     @GetMapping("/last")
     public User getLastUserId() {
         return userRepository.getLastUser();
+    }
+
+    @GetMapping("/get/{email}")
+    public User getUserByEmail(@PathVariable("email") String email) {
+        return userRepository.getUserByEmail(email);
     }
 }

@@ -9,12 +9,13 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-  @Query("select c.id from User u JOIN UserCanCreate ucc on u.id = ucc.id.idUser JOIN Character c on ucc.idCharacter.id = c.id where ucc.idUser.id = :idUser")
-  List<Integer> getCharactersByUser(@Param("idUser") int idUser);
+    @Query("select new Character(c.id,c.name,c.unlockable,c.custom,c.wayToUnlock,c.tainted) from User u JOIN UserCanCreate ucc on u.id = ucc.id.idUser JOIN Character c on ucc.idCharacter.id = c.id where ucc.idUser.id = :idUser")
+    List<Character> getCharactersByUser(@Param("idUser") int idUser);
 
-  @Query("select new User(u.id,u.name,u.email) from User u order by u.id desc limit 1")
-  User getLastUser();
+    @Query("select new User(u.id,u.name,u.email) from User u order by u.id desc limit 1")
+    User getLastUser();
 
-
+    @Query("select new User(u.id,u.name,u.email) from User u  where u.email = :email ")
+    User getUserByEmail(@Param("email") String email);
 
 }
