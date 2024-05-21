@@ -34,4 +34,7 @@ public class Item {
     @Column(name = "way_to_unlock", length = 45)
     private String wayToUnlock;
 
+    @Column(name = "image_url", nullable = false)
+    private String imageUrl;
+
 }
