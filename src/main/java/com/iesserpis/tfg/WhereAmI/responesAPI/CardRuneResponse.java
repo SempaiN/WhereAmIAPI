@@ -1,4 +1,4 @@
-package com.iesserpis.tfg.WhereAmI.entity;
+package com.iesserpis.tfg.WhereAmI.responesAPI;
 
 public class CardRuneResponse {
     public String name;

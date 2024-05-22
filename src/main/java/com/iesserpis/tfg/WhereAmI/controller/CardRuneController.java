@@ -1,6 +1,6 @@
 package com.iesserpis.tfg.WhereAmI.controller;
 
-import com.iesserpis.tfg.WhereAmI.entity.CardRuneResponse;
+import com.iesserpis.tfg.WhereAmI.responesAPI.CardRuneResponse;
 import com.iesserpis.tfg.WhereAmI.repository.CardRuneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,6 +1,6 @@
 package com.iesserpis.tfg.WhereAmI.controller;
 
-import com.iesserpis.tfg.WhereAmI.entity.PillResponse;
+import com.iesserpis.tfg.WhereAmI.responesAPI.PillResponse;
 import com.iesserpis.tfg.WhereAmI.repository.PillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

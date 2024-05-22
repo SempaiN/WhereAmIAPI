@@ -2,6 +2,7 @@ package com.iesserpis.tfg.WhereAmI.controller;
 
 import com.iesserpis.tfg.WhereAmI.entity.Item;
 import com.iesserpis.tfg.WhereAmI.repository.ItemRepository;
+import com.iesserpis.tfg.WhereAmI.responesAPI.ResponseItemModifies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,5 +27,10 @@ public class ItemController {
     @GetMapping("/{id}")
     public Item getItem(@PathVariable int id) {
         return itemRepository.findById(id).orElse(null);
+    }
+
+    @GetMapping("/get_stats_changes/{id}")
+    public List<ResponseItemModifies> getItemChanges(@PathVariable int id) {
+        return itemRepository.getStatChanges(id);
     }
 }

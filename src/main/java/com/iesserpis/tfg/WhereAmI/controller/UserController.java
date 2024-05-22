@@ -1,6 +1,5 @@
 package com.iesserpis.tfg.WhereAmI.controller;
 
-import com.iesserpis.tfg.WhereAmI.entity.CharacterUserResponse;
 import com.iesserpis.tfg.WhereAmI.entity.User;
 import com.iesserpis.tfg.WhereAmI.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
