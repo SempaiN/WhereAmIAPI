@@ -2,6 +2,7 @@ package com.iesserpis.tfg.WhereAmI.controller;
 
 import com.iesserpis.tfg.WhereAmI.entity.Character;
 import com.iesserpis.tfg.WhereAmI.repository.CharacterRepository;
+import com.iesserpis.tfg.WhereAmI.responesAPI.StatsBaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,12 @@ public class CharacterController {
     public List<Map<String, Double>> getCharacterStats(@PathVariable int id) {
         return characterRepository.getCharacterStats(id);
     }
+
+    @GetMapping("/stats_base/{id}")
+    public List<StatsBaseResponse> getCharacterStatsBase(@PathVariable int id){
+        return characterRepository.getCharacterStatsBase(id);
+    }
+
     @GetMapping("/")
     public List<Character> getCharactersDefault(){
         return characterRepository.getCharactersNotCustom();

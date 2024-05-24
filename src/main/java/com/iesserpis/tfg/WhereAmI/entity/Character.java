@@ -29,13 +29,18 @@ public class Character {
     @Column(name = "tainted", nullable = false)
     private Boolean tainted = false;
 
-    public Character(Integer id, String name, Boolean unlockable, Boolean custom, String wayToUnlock, Boolean tainted) {
+    @Column(name = "imageurl")
+    private String imageUrl;
+
+
+    public Character(Integer id, String name, Boolean unlockable, Boolean custom, String wayToUnlock, Boolean tainted, String imageUrl) {
         this.id = id;
         this.name = name;
         this.unlockable = unlockable;
         this.custom = custom;
         this.wayToUnlock = wayToUnlock;
         this.tainted = tainted;
+        this.imageUrl = imageUrl;
     }
 
     public Character() {
