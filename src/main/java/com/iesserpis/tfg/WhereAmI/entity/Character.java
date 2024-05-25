@@ -32,8 +32,10 @@ public class Character {
     @Column(name = "imageurl")
     private String imageUrl;
 
+    @Column(name = "transitionimageurl")
+    private String transitionImage;
 
-    public Character(Integer id, String name, Boolean unlockable, Boolean custom, String wayToUnlock, Boolean tainted, String imageUrl) {
+    public Character(Integer id, String name, Boolean unlockable, Boolean custom, String wayToUnlock, Boolean tainted, String imageUrl, String transitionImage) {
         this.id = id;
         this.name = name;
         this.unlockable = unlockable;
@@ -41,6 +43,7 @@ public class Character {
         this.wayToUnlock = wayToUnlock;
         this.tainted = tainted;
         this.imageUrl = imageUrl;
+        this.transitionImage = transitionImage;
     }
 
     public Character() {
