@@ -31,4 +31,7 @@ public class Trinket {
     @Column(name = "quote", nullable = false, length = 45)
     private String quote;
 
+    @Column(name = "imageurl")
+    private String imageUrl;
+
 }
