@@ -17,7 +17,8 @@ public interface CharacterRepository extends JpaRepository<Character, Integer> {
 
     @Query(value = """
             SELECT
-                s.name AS stat_name,
+        
+                s.name AS name,
                 (cp.value + COALESCE(SUM(im.value), 0)) AS total_value
             FROM
                 Character c
@@ -39,8 +40,10 @@ public interface CharacterRepository extends JpaRepository<Character, Integer> {
                 c.id = :characterId
             GROUP BY
                 c.id, s.id
+            
             """)
     List<Map<String,Double>> getCharacterStats(@Param("characterId") int characterId);
+
 
     @Query("select  new com.iesserpis.tfg.WhereAmI.responesAPI.StatsBaseResponse(s.name,cp.value)  " +
             "from Character c " +

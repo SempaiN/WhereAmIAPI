@@ -2,6 +2,7 @@ package com.iesserpis.tfg.WhereAmI.controller;
 
 import com.iesserpis.tfg.WhereAmI.entity.Trinket;
 import com.iesserpis.tfg.WhereAmI.repository.TrinketRepository;
+import com.iesserpis.tfg.WhereAmI.responesAPI.ResponseObjectModifies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,5 +26,10 @@ public class TrinketController {
     @GetMapping("/{id}")
     public Trinket getTrinket(@PathVariable int id) {
         return trinketRepository.findById(id).orElse(null);
+    }
+
+    @GetMapping("/trinket_modifies/{id}")
+    public List<ResponseObjectModifies> getStatsTrinketModifies(@PathVariable int id) {
+        return trinketRepository.getItemModified(id);
     }
 }
