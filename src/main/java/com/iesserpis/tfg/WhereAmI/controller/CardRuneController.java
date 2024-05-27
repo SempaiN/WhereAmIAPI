@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tboi/cards_runes")
+    @RequestMapping("/tboi/cards_runes")
 public class CardRuneController {
 
     @Autowired

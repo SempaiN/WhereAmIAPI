@@ -25,4 +25,6 @@ public class Pickup {
     @Column(name = "way_to_unlock", length = 45)
     private String wayToUnlock;
 
+    @Column(name = "imageurl", nullable = false)
+    private String imageUrl;
 }

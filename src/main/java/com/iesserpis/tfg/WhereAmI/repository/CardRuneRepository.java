@@ -10,9 +10,9 @@ import java.util.List;
 
 public interface CardRuneRepository extends JpaRepository<CardRune, Integer> {
 
-    @Query("select  new com.iesserpis.tfg.WhereAmI.responesAPI.CardRuneResponse(pk.name,pk.wayToUnlock,pk.unlockable,cr.description,cr.message) from Pickup pk join CardRune cr on pk.id = cr.id")
+    @Query("select  new com.iesserpis.tfg.WhereAmI.responesAPI.CardRuneResponse(pk.name,pk.wayToUnlock,pk.unlockable,cr.description,cr.message,pk.imageUrl) from Pickup pk join CardRune cr on pk.id = cr.id")
     List<CardRuneResponse> getAllCardRune();
 
-    @Query("select  new com.iesserpis.tfg.WhereAmI.responesAPI.CardRuneResponse(pk.name,pk.wayToUnlock,pk.unlockable,cr.description,cr.message) from Pickup pk join CardRune cr on pk.id = cr.id where cr.id = :idcardrune" )
+    @Query("select  new com.iesserpis.tfg.WhereAmI.responesAPI.CardRuneResponse(pk.name,pk.wayToUnlock,pk.unlockable,cr.description,cr.message,pk.imageUrl) from Pickup pk join CardRune cr on pk.id = cr.id where cr.id = :idcardrune" )
     CardRuneResponse getCardRune(@Param("idcardrune") int idcardrune);
 }
