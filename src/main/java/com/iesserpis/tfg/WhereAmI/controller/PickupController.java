@@ -2,6 +2,7 @@ package com.iesserpis.tfg.WhereAmI.controller;
 
 import com.iesserpis.tfg.WhereAmI.entity.Pickup;
 import com.iesserpis.tfg.WhereAmI.repository.PickupRepository;
+import com.iesserpis.tfg.WhereAmI.responesAPI.ResponseObjectModifies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,5 +28,8 @@ public class PickupController {
         return pickupRepository.findById(id).orElse(null);
     }
 
-
+    @GetMapping("/pickup_modifies/{id}")
+    public List<ResponseObjectModifies> getStatsPickupModifies(@PathVariable int id) {
+        return pickupRepository.getStatsModifiedByPickup(id);
+    }
 }
