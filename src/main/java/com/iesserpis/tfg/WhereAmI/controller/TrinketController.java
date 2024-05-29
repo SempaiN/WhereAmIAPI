@@ -33,3 +33,4 @@ public class TrinketController {
         return trinketRepository.getItemModified(id);
     }
 }
+

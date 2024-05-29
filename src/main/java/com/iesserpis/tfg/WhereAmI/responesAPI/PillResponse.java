@@ -6,12 +6,18 @@ public class PillResponse {
     public String effect;
     public Integer polarity;
     public String imageUrl;
+    public Boolean unlockable;
+    public String wayToUnlock;
 
-    public PillResponse(String name, String effect, Integer polarity, String imageUrl, int id) {
+    public PillResponse(int id, String name, String effect, Integer polarity, String imageUrl, Boolean unlockable, String wayToUnlock) {
+        this.id = id;
         this.name = name;
         this.effect = effect;
         this.polarity = polarity;
         this.imageUrl = imageUrl;
-        this.id = id;
+        this.unlockable = unlockable;
+        this.wayToUnlock = wayToUnlock;
     }
+
+
 }
