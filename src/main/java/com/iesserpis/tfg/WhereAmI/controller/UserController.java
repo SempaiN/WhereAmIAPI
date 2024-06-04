@@ -73,5 +73,35 @@ public class UserController {
     public void deleteItemFavorite(@PathVariable int idUser, @PathVariable int idItem) {
         userRepository.deleteItemFavorite(idUser, idItem);
     }
+
+    @GetMapping("/trinketIsFavorite/{idTrinket}/{idUser}")
+    public boolean trinketIsFavorite(@PathVariable("idTrinket") int idTrinket, @PathVariable("idUser") int idUser) {
+        return userRepository.trinketIsFavorite(idTrinket, idUser);
+    }
+
+    @PostMapping("/addTrinketToFavorite/{idTrinket}/{idUser}")
+    public void addTrinketToFavorite(@PathVariable int idTrinket, @PathVariable int idUser) {
+        userRepository.addTrinketToFavorite(idTrinket, idUser);
+    }
+
+    @DeleteMapping("/deleteTrinketFavorite/{idUser}/{idTrinket}")
+    public void deleteTrinketFavorite(@PathVariable int idUser, @PathVariable int idTrinket) {
+        userRepository.deleteTrinketFavorite(idUser, idTrinket);
+    }
+
+    @GetMapping("/pickupIsFavorite/{idPickup}/{idUser}")
+    public boolean pickupIsFavorite(@PathVariable("idPickup") int idPickup, @PathVariable("idUser") int idUser) {
+        return userRepository.pickupIsFavorite(idPickup, idUser);
+    }
+
+    @PostMapping("/addPickupToFavorite/{idPickup}/{idUser}")
+    public void addPickupToFavorite(@PathVariable int idPickup, @PathVariable int idUser) {
+        userRepository.addPickupToFavorite(idPickup, idUser);
+    }
+
+    @DeleteMapping("/deletePickupFavorite/{idUser}/{idPickup}")
+    public void deletePickupFavorite(@PathVariable int idUser, @PathVariable int idPickup) {
+        userRepository.deletePickupFavorite(idUser, idPickup);
+    }
 }
 

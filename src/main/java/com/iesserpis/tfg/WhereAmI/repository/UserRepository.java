@@ -48,6 +48,12 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("select EXISTS(select 1 from ItemFavorite if where if.iditem.id = :idItem and if.iduser.id = :idUser) as ItemIsFavorite")
     boolean itemIsFavorite(@Param("idItem") int idItem, @Param("idUser") int idUser);
 
+    @Query("select EXISTS(select 1 from PickupFavorite pf where pf.idpickup.id = :idPickup and pf.iduser.id = :idUser) as PickupIsFavorite")
+    boolean pickupIsFavorite(@Param("idPickup") int idPickup, @Param("idUser") int idUser);
+
+    @Query("select EXISTS(select 1 from TrinketFavorite tf where tf.idTrinket.id = :idTrinket and tf.idUser.id = :idUser) as PickupIsFavorite")
+    boolean trinketIsFavorite(@Param("idTrinket") int idTrinket, @Param("idUser") int idUser);
+
 
     @Modifying
     @Transactional
@@ -56,7 +62,30 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Modifying
     @Transactional
+    @Query(value = "INSERT into  where_am_i.trinket_favorite (idtrinket, iduser) VALUES (:idTrinket, :idUser)", nativeQuery = true)
+    void addTrinketToFavorite(@Param("idTrinket") int idTrinket, @Param("idUser") int idUser);
+
+    @Modifying
+    @Transactional
+    @Query(value = "INSERT into  where_am_i.pickup_favorite (idpickup, iduser) VALUES (:idPickup, :idUser)", nativeQuery = true)
+    void addPickupToFavorite(@Param("idPickup") int idPickup, @Param("idUser") int idUser);
+
+
+    @Modifying
+    @Transactional
     @Query(value = "delete from ItemFavorite " +
             "where iduser.id = :idUser and iditem.id = :idItem")
     void deleteItemFavorite(@Param("idUser") int idUser, @Param("idItem") int idItem);
+
+    @Modifying
+    @Transactional
+    @Query(value = "delete from TrinketFavorite " +
+            "where idUser.id = :idUser and idTrinket.id = :idTrinket")
+    void deleteTrinketFavorite(@Param("idUser") int idUser, @Param("idTrinket") int idTrinket);
+
+    @Modifying
+    @Transactional
+    @Query(value = "delete from PickupFavorite " +
+            "where iduser.id = :idUser and idpickup.id = :idPickup")
+    void deletePickupFavorite(@Param("idUser") int idUser, @Param("idPickup") int idPickup);
 }
