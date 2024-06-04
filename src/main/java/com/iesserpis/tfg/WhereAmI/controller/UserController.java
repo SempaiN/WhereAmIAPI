@@ -58,4 +58,20 @@ public class UserController {
     public List<PillResponse> getPillFavoriteUser(@PathVariable("id") int id) {
         return userRepository.getPillsFavoriteByUser(id);
     }
+
+    @GetMapping("/itemIsFavorite/{idItem}/{idUser}")
+    public boolean itemIsFavorite(@PathVariable("idItem") int idItem, @PathVariable("idUser") int idUser) {
+        return userRepository.itemIsFavorite(idItem, idUser);
+    }
+
+    @PostMapping("/addItemToFavorite/{idItem}/{idUser}")
+    public void addItemToFavorite(@PathVariable int idItem, @PathVariable int idUser) {
+        userRepository.addItemToFavorite(idItem, idUser);
+    }
+
+    @DeleteMapping("/deleteItemFavorite/{idUser}/{idItem}")
+    public void deleteItemFavorite(@PathVariable int idUser, @PathVariable int idItem) {
+        userRepository.deleteItemFavorite(idUser, idItem);
+    }
 }
+

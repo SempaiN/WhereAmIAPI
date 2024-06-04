@@ -6,8 +6,10 @@ import com.iesserpis.tfg.WhereAmI.entity.User;
 import com.iesserpis.tfg.WhereAmI.responesAPI.CardRuneResponse;
 import com.iesserpis.tfg.WhereAmI.responesAPI.PillResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -42,4 +44,19 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             "join Pill p2 on p.id = p2.id " +
             "where pf.iduser.id = :idUser")
     List<PillResponse> getPillsFavoriteByUser(@Param("idUser") int idUser);
+
+    @Query("select EXISTS(select 1 from ItemFavorite if where if.iditem.id = :idItem and if.iduser.id = :idUser) as ItemIsFavorite")
+    boolean itemIsFavorite(@Param("idItem") int idItem, @Param("idUser") int idUser);
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "INSERT into  where_am_i.item_favorite (iditem, iduser) VALUES (:idItem, :idUser)", nativeQuery = true)
+    void addItemToFavorite(@Param("idItem") int idItem, @Param("idUser") int idUser);
+
+    @Modifying
+    @Transactional
+    @Query(value = "delete from ItemFavorite " +
+            "where iduser.id = :idUser and iditem.id = :idItem")
+    void deleteItemFavorite(@Param("idUser") int idUser, @Param("idItem") int idItem);
 }
