@@ -2,6 +2,7 @@ package com.iesserpis.tfg.WhereAmI.repository;
 
 import com.iesserpis.tfg.WhereAmI.entity.Character;
 import com.iesserpis.tfg.WhereAmI.entity.Item;
+import com.iesserpis.tfg.WhereAmI.entity.Trinket;
 import com.iesserpis.tfg.WhereAmI.entity.User;
 import com.iesserpis.tfg.WhereAmI.responesAPI.CardRuneResponse;
 import com.iesserpis.tfg.WhereAmI.responesAPI.PillResponse;
@@ -51,19 +52,14 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("select EXISTS(select 1 from PickupFavorite pf where pf.idpickup.id = :idPickup and pf.iduser.id = :idUser) as PickupIsFavorite")
     boolean pickupIsFavorite(@Param("idPickup") int idPickup, @Param("idUser") int idUser);
 
-    @Query("select EXISTS(select 1 from TrinketFavorite tf where tf.idTrinket.id = :idTrinket and tf.idUser.id = :idUser) as PickupIsFavorite")
+    @Query("select  exists (select  1 from TrinketFavorite tf where tf.idTrinket.id =:idTrinket and tf.idUser.id = :idUser)")
     boolean trinketIsFavorite(@Param("idTrinket") int idTrinket, @Param("idUser") int idUser);
-
 
     @Modifying
     @Transactional
     @Query(value = "INSERT into  where_am_i.item_favorite (iditem, iduser) VALUES (:idItem, :idUser)", nativeQuery = true)
     void addItemToFavorite(@Param("idItem") int idItem, @Param("idUser") int idUser);
 
-    @Modifying
-    @Transactional
-    @Query(value = "INSERT into  where_am_i.trinket_favorite (idtrinket, iduser) VALUES (:idTrinket, :idUser)", nativeQuery = true)
-    void addTrinketToFavorite(@Param("idTrinket") int idTrinket, @Param("idUser") int idUser);
 
     @Modifying
     @Transactional
@@ -77,11 +73,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             "where iduser.id = :idUser and iditem.id = :idItem")
     void deleteItemFavorite(@Param("idUser") int idUser, @Param("idItem") int idItem);
 
-    @Modifying
-    @Transactional
-    @Query(value = "delete from TrinketFavorite " +
-            "where idUser.id = :idUser and idTrinket.id = :idTrinket")
-    void deleteTrinketFavorite(@Param("idUser") int idUser, @Param("idTrinket") int idTrinket);
 
     @Modifying
     @Transactional

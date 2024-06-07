@@ -32,5 +32,15 @@ public class TrinketController {
     public List<ResponseObjectModifies> getStatsTrinketModifies(@PathVariable int id) {
         return trinketRepository.getItemModified(id);
     }
+
+    @GetMapping("/getTrinketsFavorites/")
+    public List<Integer> getFavoriteTrinkets() {
+        return trinketRepository.getTrinketsFavorites();
+    }
 }
+
+
+
+
+
 

@@ -12,5 +12,14 @@ public interface TrinketRepository extends JpaRepository<Trinket, Integer> {
     @Query("""
             select new com.iesserpis.tfg.WhereAmI.responesAPI.ResponseObjectModifies(s.name, tm.value)  from TrinketModify tm  join Stat s on s.id = tm.idstat.id where tm.idtrinket.id =:trinketId
             """)
-            List<ResponseObjectModifies>getItemModified(@Param("trinketId") int trinketId);
+    List<ResponseObjectModifies> getItemModified(@Param("trinketId") int trinketId);
+
+    @Query("select tf.idTrinket.id from TrinketFavorite tf ")
+    List<Integer> getTrinketsFavorites();
+
+
 }
+
+
+
+
