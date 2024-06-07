@@ -20,7 +20,6 @@ public class ItemController {
 
     @GetMapping("/")
     public List<Item> getItems() {
-//        ItemResponse = new ItemResponse(itemRepository.count, itemRepository.findAll())
         return itemRepository.findAll();
     }
 
