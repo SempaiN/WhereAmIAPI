@@ -16,7 +16,7 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    @Query("select new com.iesserpis.tfg.WhereAmI.entity.Character(c.id,c.name,c.unlockable,c.custom,c.wayToUnlock,c.tainted,c.imageUrl,c.transitionImage) " +
+    @Query("select c " +
             "from User u " +
             "JOIN UserCanCreate ucc on u.id = ucc.id.idUser " +
             "JOIN Character c on ucc.idCharacter.id = c.id " +

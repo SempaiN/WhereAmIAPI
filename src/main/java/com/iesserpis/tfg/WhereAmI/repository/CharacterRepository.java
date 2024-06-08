@@ -53,6 +53,9 @@ public interface CharacterRepository extends JpaRepository<Character, Integer> {
             "group by c.id,s.id")
     List<StatsBaseResponse> getCharacterStatsBase(@Param("characterId") int characterId);
 
-    @Query("select new Character(c.id,c.name,c.unlockable,c.custom,c.wayToUnlock,c.tainted,c.imageUrl,c.transitionImage) from Character c where c.custom = false")
+    @Query("select c from Character c where c.custom = false")
     List<Character> getCharactersNotCustom();
+
+    @Query("select c from Character c where c.tainted = true")
+    List<Character> getTaintedCharacters();
 }

@@ -27,4 +27,9 @@ public class CardRuneController {
         return cardRuneRepository.getCardRune(id);
     }
 
+    @GetMapping("/get_unlockable_cardsrunes/")
+    public List<CardRuneResponse> getUnlockableCardsRunes(){
+        return cardRuneRepository.getUnlockableCardRunes();
+    }
+
 }

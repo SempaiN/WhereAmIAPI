@@ -23,6 +23,16 @@ public class ItemController {
         return itemRepository.findAll();
     }
 
+    @GetMapping("/active_items/")
+    public List<Item> getActiveItems() {
+        return itemRepository.selectAllActiveItems();
+    }
+
+    @GetMapping("/unlockable_items/")
+    public List<Item> getUnlockableItems() {
+        return itemRepository.selectUnlockableItems();
+    }
+
     @GetMapping("/{id}")
     public Item getItem(@PathVariable int id) {
         return itemRepository.findById(id).orElse(null);

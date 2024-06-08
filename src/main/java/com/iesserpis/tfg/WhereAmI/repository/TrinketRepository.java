@@ -17,6 +17,8 @@ public interface TrinketRepository extends JpaRepository<Trinket, Integer> {
     @Query("select tf.idTrinket.id from TrinketFavorite tf ")
     List<Integer> getTrinketsFavorites();
 
+    @Query("select t from Trinket t where t.unlockable = true ")
+    List<Trinket> getTrinketUnlockables();
 
 }
 

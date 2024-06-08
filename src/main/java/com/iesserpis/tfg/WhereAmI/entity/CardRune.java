@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "`card/rune`")
+@Table(name = "`cards/runes`")
 public class CardRune {
     @Id
     @Column(name = "idpickup", nullable = false)

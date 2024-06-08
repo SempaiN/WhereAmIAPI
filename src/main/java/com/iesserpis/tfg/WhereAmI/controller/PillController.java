@@ -26,4 +26,25 @@ public class PillController {
     public PillResponse getPillById(@PathVariable int id) {
         return pillRepository.findOnePill(id);
     }
+
+    @GetMapping("/negative_pills/")
+    public List<PillResponse> getNegativePills() {
+        return pillRepository.selectTypePills(-1);
+    }
+
+    @GetMapping("/neutral_pills/")
+    public List<PillResponse> getNeutralPills() {
+        return pillRepository.selectTypePills(0);
+    }
+
+    @GetMapping("/positive_pills/")
+    public List<PillResponse> getPositivePills() {
+        return pillRepository.selectTypePills(1);
+    }
+
+    @GetMapping("/unlockable_pills")
+    public List<PillResponse> getUnlockablePills() {
+        return pillRepository.selectUnlockablePills();
+    }
+
 }

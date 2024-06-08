@@ -37,6 +37,11 @@ public class TrinketController {
     public List<Integer> getFavoriteTrinkets() {
         return trinketRepository.getTrinketsFavorites();
     }
+
+    @GetMapping("/get_trinkets_unlockables/")
+    public List<Trinket> getTrinketsUnlockables() {
+        return trinketRepository.getTrinketUnlockables();
+    }
 }
 
 

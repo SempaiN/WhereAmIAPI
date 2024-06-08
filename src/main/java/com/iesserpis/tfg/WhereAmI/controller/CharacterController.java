@@ -47,4 +47,9 @@ public class CharacterController {
         return characterRepository.getCharactersNotCustom();
     }
 
+    @GetMapping("/get_tainted_characters/")
+    public List<Character> getTaintedCharacters() {
+        return characterRepository.getTaintedCharacters();
+    }
+
 }
